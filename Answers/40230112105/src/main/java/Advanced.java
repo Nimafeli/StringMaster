@@ -10,7 +10,25 @@ public class Advanced {
 
      */
     public String wordCensor(String sentence, String word, String newWord){
-        return null;
+        String[] devided =  sentence.split(" ");
+        boolean flag = false;
+        int index = -1;
+        for(int i = 0; i < devided.length; i++) {
+            if(devided[i].equals(word)){
+                flag = true;
+                index = i;
+            }
+        }
+        if(flag){
+            devided[index] = newWord;
+            String newSentence = String.join(" ", devided);
+            return newSentence;
+        }else{
+            return ("There is no match");
+        }
+
+        
+
     }
 
     /**
@@ -20,7 +38,12 @@ public class Advanced {
      * @return fullName is a normal full name that just the first letter of firstName & lastName is Capitalized (example : Harry Potter)
      */
     public String normalizingName(String firstName, String lastName){
-        return null;
+        firstName = firstName.toLowerCase();
+        lastName = lastName.toLowerCase();
+        String normilizeF = firstName.substring(0,1).toUpperCase()+firstName.substring(1);
+        String normilizeL = lastName.substring(0,1).toUpperCase()+lastName.substring(1);
+        String normalName = normilizeF + " " + normilizeL;
+        return normalName;
     }
 
     /**
@@ -29,7 +52,17 @@ public class Advanced {
      * @return if word contains Consecutive repeated letters, one of the repeated letters should be omitted
      */
     public String doubleChar(String word) {
-        return null;
+        String[] devided = word.split("");
+        for(int i = 0 ; i< devided.length - 1; i++){
+            if(devided[i].equals(devided[i+1])) {
+                for(int j = i; j < devided.length - 1; j++){
+                    devided[j] = devided[j+1];
+                }
+                devided[devided.length - 1] = "\0";
+            }
+        }
+        word = String.join("", devided);
+        return word;
     }
 }
 
